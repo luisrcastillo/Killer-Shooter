@@ -468,6 +468,7 @@ static irqreturn_t hdmi_msm_isr(int irq, void *dev_id)
 	static uint32 fifo_urun_int_occurred;
 	static uint32 sample_drop_int_occurred;
 	const uint32 occurrence_limit = 5;
+	char *envp[2];
 
 	if (!hdmi_msm_state || !hdmi_msm_state->hpd_initialized || !HDMI_BASE) {
 		DEV_DBG("ISR ignored, probe failed\n");
