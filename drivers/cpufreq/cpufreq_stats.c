@@ -171,14 +171,11 @@ static int freq_table_get_index(struct cpufreq_stats *stat, unsigned int freq)
 static void cpufreq_stats_free_table(unsigned int cpu)
 {
 	struct cpufreq_stats *stat = per_cpu(cpufreq_stats_table, cpu);
-<<<<<<< HEAD
 	struct cpufreq_policy *policy = cpufreq_cpu_get(cpu);
 
 	if (policy && policy->cpu == cpu)
 		sysfs_remove_group(&policy->kobj, &stats_attr_group);
 
-=======
->>>>>>> eda748c... Patch to linux upstream 2.6.35.14
 	if (stat) {
 		kfree(stat->time_in_state);
 		kfree(stat);
@@ -337,12 +334,9 @@ static int __cpuinit cpufreq_stat_cpu_callback(struct notifier_block *nfb,
 		cpufreq_update_policy(cpu);
 		break;
 	case CPU_DOWN_PREPARE:
-<<<<<<< HEAD
 	case CPU_DOWN_PREPARE_FROZEN:
-=======
 		cpufreq_stats_free_sysfs(cpu);
 		break;
->>>>>>> eda748c... Patch to linux upstream 2.6.35.14
 	case CPU_DEAD:
 	case CPU_DEAD_FROZEN:
 		cpufreq_stats_free_table(cpu);
